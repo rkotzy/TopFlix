@@ -11,5 +11,9 @@ import UIKit
 class SummaryCell: UITableViewCell {
 
     @IBOutlet weak var summaryTextView: UITextView!
+    
+    func defineFromMovieInfo(movie: MovieInfo) {
+        summaryTextView.text = movie.summary
+    }
 }
 

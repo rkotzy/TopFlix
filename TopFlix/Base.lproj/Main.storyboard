@@ -193,7 +193,7 @@
                                             <outlet property="title" destination="eUn-ac-gH5" id="3Iu-mV-F8i"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ViewCell" textLabel="Lw2-Gm-VGh" style="IBUITableViewCellStyleDefault" id="8b3-co-eQb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ViewCell" textLabel="Lw2-Gm-VGh" style="IBUITableViewCellStyleDefault" id="8b3-co-eQb" customClass="SeperatorCell" customModule="TopFlix" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="292" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8b3-co-eQb" id="5SJ-0Y-X0M">

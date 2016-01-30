@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
+import Font_Awesome_Swift
+
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
                 
         // set background color from Constants color struct
-        self.view.backgroundColor = Colors().kBackgroundColor
+        self.view.backgroundColor = Colors.kBackgroundColor
         
         // set delegates
         tableView.dataSource = self
@@ -56,12 +56,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case kPreviewCellIndex:
             return kPreviewCellHeight
         case kSummaryCellIndex:
-            let font = UIFont.systemFontOfSize(14.0)
-            let text : NSString = movie.summary
-            let size = CGSizeMake(tableView.frame.size.width - 32, CGFloat.max)
-            let height = text.boundingRectWithSize(size, options: [NSStringDrawingOptions.UsesLineFragmentOrigin,NSStringDrawingOptions.UsesFontLeading], attributes: [NSFontAttributeName : font], context: nil).size.height
-
-            return height + 100
+            return Helper.heightForStringInTextView(tableView.frame.size.width-32, text: movie.summary, font: UIFont.systemFontOfSize(14), buffer: 100)
         default:
             return 44
         }
@@ -75,34 +70,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if indexPath.row == kPreviewCellIndex {
             let previewCell = tableView.dequeueReusableCellWithIdentifier("PreviewCell") as! PreviewCell
-            
-            previewCell.title.text = movie.name
-            previewCell.genre.text = movie.genre
-            previewCell.releaseDate.text = movie.releaseDate
-            previewCell.movieImage.image = movie.image
-            
+            previewCell.defineFromMovieInfo(movie)
             return previewCell
             
         } else if indexPath.row == kViewCellIndex {
-            let viewCell = tableView.dequeueReusableCellWithIdentifier("ViewCell")!
-            
-            // add custom 'seperator' views since they are hidden on the uitableview
-            let lowerLine = UIView(frame: CGRectMake(0, viewCell.frame.height - 1,viewCell.frame.width,1))
-            lowerLine.backgroundColor = Colors().kSeperatorColor
-            viewCell.addSubview(lowerLine)
-            let upperLine = UIView(frame: CGRectMake(0, 0,viewCell.frame.width,1))
-            upperLine.backgroundColor = Colors().kSeperatorColor
-            viewCell.addSubview(upperLine)
-            
+            let viewCell = tableView.dequeueReusableCellWithIdentifier("ViewCell") as! SeperatorCell
             return viewCell
             
         } else if indexPath.row == kSummaryCellIndex {
             let summaryCell = tableView.dequeueReusableCellWithIdentifier("SummaryCell") as! SummaryCell
-            summaryCell.summaryTextView.text = movie.summary
+            summaryCell.defineFromMovieInfo(movie)
             return summaryCell
         }
         
-        print("Error setting tableView cells")
+        print("Error: Unexpected DetailViewController tableView index")
         return UITableViewCell()
     }
     
@@ -110,7 +91,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.row == kViewCellIndex {
             return true
         }
-        
         return false
     }
     
@@ -139,5 +119,4 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func backButton() {
         self.navigationController?.popViewControllerAnimated(true)
     }
-
 }

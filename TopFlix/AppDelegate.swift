@@ -45,22 +45,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func appearance() {
         
-        // set values from Constants struct
-        let colors = Colors()
-        
-        UIApplication.sharedApplication().statusBarStyle = colors.kStatusBarContectColor
+        UIApplication.sharedApplication().statusBarStyle = Colors.kStatusBarContectColor
                 
-        UINavigationBar.appearance().barTintColor = colors.kNavigationBarColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : colors.kNavigationTitleColor]
-        UIBarButtonItem.appearance().tintColor = colors.kNavigationTitleColor
+        UINavigationBar.appearance().barTintColor = Colors.kNavigationBarColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Colors.kNavigationTitleColor]
+        UIBarButtonItem.appearance().tintColor = Colors.kNavigationTitleColor
         
-        UITableView.appearance().separatorColor = colors.kSeperatorColor
+        UITableView.appearance().separatorColor = Colors.kSeperatorColor
         
-        UIRefreshControl.appearance().backgroundColor = colors.kRefreshViewBackgroundColor
-        UIRefreshControl.appearance().tintColor = colors.kRefreshViewSpinnerColor
+        UIRefreshControl.appearance().backgroundColor = Colors.kRefreshViewBackgroundColor
+        UIRefreshControl.appearance().tintColor = Colors.kRefreshViewSpinnerColor
         
-        UILabel.appearance().textColor = colors.kTextColor
-        UITextView.appearance().textColor = colors.kTextColor
+        UILabel.appearance().textColor = Colors.kTextColor
+        UITextView.appearance().textColor = Colors.kTextColor
         
     }
 
